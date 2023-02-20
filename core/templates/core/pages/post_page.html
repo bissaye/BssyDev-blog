@@ -1,0 +1,73 @@
+{% extends 'core/layouts/main_layout.html' %}
+
+{% block title %}
+{{ post.titre }}
+{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+{% block content %}
+    <div class="main-wrapper">
+
+	    <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container single-col-max-width">
+			    <header class="blog-post-header">
+				    <h2 class="title mb-2">{{ post.titre }}</h2>
+				    <div class="meta mb-3"><span class="date">Published {{ post.date }}</span><span class="comment"><a  class="text-link" href="#">{{ post.comments }} comments</a></span></div>
+			    </header>
+
+                <div class="blog-post-body">
+				    <figure class="blog-banner">
+				        <a href=""><img class="img-fluid" src="/media/{{post.image}}" alt="image"></a>
+				        <figcaption class="mt-2 text-center image-caption">Image Credit: // </figcaption>
+				    </figure>
+					<p>
+						{{ post.body|safe }}
+					</p>
+				</div>
+			</div>
+		</article>
+
+		<div class="row d-flex justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+      <div class="card-body p-4">
+        <div class="form-outline mb-4">
+            <form method="post" action="{% url 'comment' %}">
+                {% csrf_token %}
+                <input type="hidden" name="post" value="{{ post.id }}">
+                <label class="form-label" for="email">your mail address</label>
+			    <input type="email" id="email" class="form-control" name="email" placeholder="your mail..." required/>
+			    <label class="form-label" for="addANote">+ Add a note</label>
+                <textarea id="addANote" class="form-control" name="commentaire" placeholder="Type comment..."></textarea>
+                <button type="submit" class="btn btn-primary mt-3">send comment</button>
+            </form>
+        </div>
+        {% for commentaire in commentaires %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <p>{{ commentaire.commentaire }}</p>
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                            <i class="fa-solid fa-user"></i>
+                            <p class="small mb-0 ms-2">{{ commentaire.adresse }}</p>
+                        </div>
+                    <div class="meta mb-3">
+                        <span class="date">
+                            Published {{ commentaire.date }}
+                        </span>
+                    </div>
+              </div>
+            </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+	</div>
+{% endblock %}
+
+
+{% block script %}
+{% endblock %}

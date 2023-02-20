@@ -1,0 +1,63 @@
+
+{% extends 'core/layouts/main_layout.html' %}
+{% load static %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+{% block content %}
+<div class="main-wrapper">
+
+	    <article class="about-section py-5">
+		    <div class="container">
+			    <h2 class="title mb-3">About Me</h2>
+                <p> I'm <strong>Bissaye mboulana Franck Honore</strong>,software engineer since 2021 but freelance developer since 2020. I know 😅 it's a bit counter-intuitive but it's the truth and let me explain: as soon as I joined SUP'PTIC yaoundé, (where I I was going to mainly do physics) I was immediately passionate about the development of web and mobile applications and software; suddenly not always being quite satisfied with the knowledge provided in class, I quickly understood that I had to document myself mainly via tutorials if I wanted to reach the level I wanted. this is how I became able to produce fairly consistent applications well before finishing my training.</p>
+			    <figure><img class="img-fluid" src="{% static 'core/img/profile2.jpg' %}" alt="image"></figure>
+			    <h5 class="mt-5">About The Blog</h5>
+				<p>I created this blog because I noticed that we developers spend a lot of our time retyping again and again google searches concerning problems that we had already had to solve in the past but which we did not note the solution that we had found on this same google the last time. hence the usefulness of my blog, to ensure that I can always have all my solutions at hand.
+For the moment it is not yet open to everyone's contribution but it will be the case very soon</p>
+			    <h5 class="mt-5">My Skills and Experiences</h5>
+				<p>blah blah blah, in real life I don't really like talking about myself because I'm a little shy, or sometimes I end up getting pretentious, so I'll be a bit brief: at the time of writing this text , I am mainly comfortable and expert in backend development based on python django , nodejs and ASP .NET Core; I also have quite advanced knowledge in system admin and DevOps as well as in front dev mainly with VueJs</p>
+			    <h5 class="mt-5">Side Projects</h5>
+				<figure>
+					<a href="https://github.com/bissaye/">my github</a>
+				</figure>
+		    </div>
+	    </article><!--//about-section-->
+
+	    <section class="cta-section theme-bg-light py-5">
+		    <div class="container text-center">
+			    <h2 class="heading">Newsletter</h2>
+			    <div class="intro">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</div>
+			    <div class="single-form-max-width pt-3 mx-auto">
+				    <form class="row g-2 g-lg-2 align-items-center" method="POST" action="{% url 'about' %}">
+						{% csrf_token %}
+	                    <div class="col-12 col-md-9">
+	                        <label class="sr-only" for="semail">Your email</label>
+	                        <input type="email" id="semail" name="email" class="form-control me-md-1 semail" placeholder="Enter email">
+	                    </div>
+	                    <div class="col-12 col-md-2">
+	                        <button type="submit" class="btn btn-primary">Subscribe</button>
+	                    </div>
+	                </form><!--//signup-form-->
+			    </div><!--//single-form-max-width-->
+		    </div><!--//container-->
+	    </section>
+
+	    <footer class="footer text-center py-2 theme-bg-dark">
+
+	        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+            <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="https://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+
+	    </footer>
+
+    </div><!--//main-wrapper-->
+{% endblock %}
+
+
+{% block script %}
+{% endblock %}
